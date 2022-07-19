@@ -23,9 +23,17 @@ body {
 .wrapper {
     background: #fff;
     max-width: 420px;
-    height: 260px;
+    height: 240px;
     border-radius: 10px;
     padding: 16px 25px;
+    /* Questa transizione serve per modificare l'altezza
+    dalla condizione di 260px a 530px della classe active*/
+    transition: height 0.2s ease;
+}
+
+/* Condizione del wrapper post generazione del QR Code */
+.wrapper.active {
+    height: 500px;
 }
 
 header h1 {
@@ -35,29 +43,28 @@ header h1 {
 
 header p {
     color: #474747;
+    font-size: 14px;
     font-weight: 500;
     margin-top: 5px;
 }
 /*#endregion */
 
-
-
 /*#region Zona del Form */
 .form {
-    margin: 20px 0 30px;
+    margin: 20px 0 25px;
 }
 
 /* in questo caso seleziono input e button del form */
 .form :where(input,button) {
     width: 100%;
-    height: 55px;
+    height: 45px;
     border: none;
     outline: none;
     border-radius: 5px;
 }
 
 .form input {
-    font-size: 18px;
+    font-size: 14px;
     padding: 0 16px;
     border: 1px solid #999
 }
@@ -77,11 +84,20 @@ header p {
     align-items: center;
     justify-content: center;
     opacity: 0;
+    /* Serve momentaneamente per far uscire il qr code
+    al click del button. di default è none proprio per dare
+    l'effetto dello scroll
+     */
     pointer-events: none;
     padding: 30px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-
+.wrapper.active .qr-code {
+    opacity: 1;
+    pointer-events: auto;
+    /* Avvio una transizione sull'opacità per effetto comparsa */
+    transition: opacity 0.5s 0.05s ease;
+}
 /*#endregion */
